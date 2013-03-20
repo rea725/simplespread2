@@ -17,11 +17,9 @@
 
 
 
-
-qx.log.Logger.ROOT_LOGGER.removeAllAppenders();
-
-qx.log.Logger.ROOT_LOGGER.addAppender(new qx.log.appender.Window());
-
+//  document.write('<div id="demoDebug"></div>');
+//  qx.log.Logger.ROOT_LOGGER.removeAllAppenders();
+//  qx.log.Logger.ROOT_LOGGER.addAppender(new qx.log.appender.Div("demoDebug"));
 
 
 
@@ -56,7 +54,7 @@ qx.Class.define("com.logisphere.x4view.Application",
       d.add(w0); 
   
       var w1 = new qx.ui.window.Window("Simple Spreadsheet Component");
-      w1.setSpace(20, 800, 20, 600);
+      w1.setSpace(20, 400, 20, 270);
       w0.add(w1);
   
       var tf1 = new qx.ui.pageview.tabview.TabView;

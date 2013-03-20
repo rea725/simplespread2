@@ -34,7 +34,7 @@
 # Please note that Windows users should always use relative paths.
 # It should end with the last directory. Please omit a trailing slash.
 #
-QOOXDOO_PATH = ..
+QOOXDOO_PATH = ../qooxdoo/qooxdoo
 QOOXDOO_VERSION = 0.7.4
 
 
