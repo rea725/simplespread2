@@ -1,4 +1,4 @@
-qx.Class.define("qx.ui.spread.SpreadUtilsHtmlStyle",
+qx.Class.define("ss.SpreadUtilsHtmlStyle",
 {
   /*
   *****************************************************************************
@@ -44,7 +44,7 @@ qx.Class.define("qx.ui.spread.SpreadUtilsHtmlStyle",
       //	Clobbers the existing list of classes for the node, replacing it with
       //	the list given in the 2nd argument. Returns true or false
       //	indicating success or failure.
-      node = qx.ui.spread.SpreadUtilsHtmlDom.byId(node);
+      node = ss.SpreadUtilsHtmlDom.byId(node);
       var cs = new String(classStr);
 
       try
@@ -115,7 +115,7 @@ qx.Class.define("qx.ui.spread.SpreadUtilsHtmlStyle",
       //	summary
       //	Returns the string value of the list of CSS classes currently assigned directly
       //	to the node in question. Returns an empty string if no class attribute is found;
-      node = qx.ui.spread.SpreadUtilsHtmlDom.byId(node);
+      node = ss.SpreadUtilsHtmlDom.byId(node);
 
       if (!node) {
         return "";
@@ -125,8 +125,8 @@ qx.Class.define("qx.ui.spread.SpreadUtilsHtmlStyle",
 
       if (node.className) {
         cs = node.className;
-      } else if (qx.ui.spread.SpreadUtilsHtmlCommon.hasAttribute(node, "class")) {
-        cs = qx.ui.spread.SpreadUtilsHtmlCommon.getAttribute(node, "class");
+      } else if (ss.SpreadUtilsHtmlCommon.hasAttribute(node, "class")) {
+        cs = ss.SpreadUtilsHtmlCommon.getAttribute(node, "class");
       }
 
       return cs.replace(/^\s+|\s+$/g, "");  //	string
@@ -181,7 +181,7 @@ qx.Class.define("qx.ui.spread.SpreadUtilsHtmlStyle",
     {
       //	summary
       //	Returns the computed style of cssSelector on node.
-      node = qx.ui.spread.SpreadUtilsHtmlDom.byId(node);
+      node = ss.SpreadUtilsHtmlDom.byId(node);
 
       // cssSelector may actually be in camel case, so force selector version
       var cssSelector = this.toSelectorCase(cssSelector);
@@ -190,7 +190,7 @@ qx.Class.define("qx.ui.spread.SpreadUtilsHtmlStyle",
       if (!node || !node.style) {
         return inValue;
       }
-      else if (document.defaultView && qx.ui.spread.SpreadUtilsHtmlDom.isDescendantOf(node, node.ownerDocument))
+      else if (document.defaultView && ss.SpreadUtilsHtmlDom.isDescendantOf(node, node.ownerDocument))
       {  // W3, gecko, KHTML
         try
         {
@@ -242,7 +242,7 @@ qx.Class.define("qx.ui.spread.SpreadUtilsHtmlStyle",
     {
       //	summary
       //	Returns the value of the passed style
-      node = qx.ui.spread.SpreadUtilsHtmlDom.byId(node);
+      node = ss.SpreadUtilsHtmlDom.byId(node);
       return (node && node.style ? node.style[this.toCamelCase(cssSelector)] : undefined);  //	string
     },
 
@@ -275,7 +275,7 @@ qx.Class.define("qx.ui.spread.SpreadUtilsHtmlStyle",
     {
       //	summary
       //	returns the background color of the passed node as a 32-bit color (RGBA)
-      node = qx.ui.spread.SpreadUtilsHtmlDom.byId(node);
+      node = ss.SpreadUtilsHtmlDom.byId(node);
       var color;
 
       do

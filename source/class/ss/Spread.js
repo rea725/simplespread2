@@ -3,7 +3,7 @@
  * SpreadSheet project
  * Author : O. Sadey
  */
-qx.Class.define("qx.ui.spread.Spread",
+qx.Class.define("ss.Spread",
 {
   extend : qx.ui.layout.VerticalBoxLayout,
 
@@ -1385,7 +1385,7 @@ qx.Class.define("qx.ui.spread.Spread",
       vertLay.add(contentHtml);
       this.tabViewPages[currentTabIdx].add(vertLay);
 
-      var sheet = new qx.ui.spread.SpreadSheet(sheetName);
+      var sheet = new ss.SpreadSheet(sheetName);
 
       contentHtml.addEventListener("insertDom", function(e) {
         sheet.initSheet(contentHtml, contentHtml.getElement(), prevThis.formulaField, funcButton, prevThis, openExisting, additionalData);

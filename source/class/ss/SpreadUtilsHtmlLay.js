@@ -1,4 +1,4 @@
-qx.Class.define("qx.ui.spread.SpreadUtilsHtmlLay",
+qx.Class.define("ss.SpreadUtilsHtmlLay",
 {
   /*
   *****************************************************************************
@@ -19,7 +19,7 @@ qx.Class.define("qx.ui.spread.SpreadUtilsHtmlLay",
     {
       //	summary
       //	Returns the dimensions of the passed element based on border-box sizing.
-      node = qx.ui.spread.SpreadUtilsHtmlDom.byId(node);
+      node = ss.SpreadUtilsHtmlDom.byId(node);
 
       // OSY return { width: node.offsetWidth, height: node.offsetHeight };	//	object
       return { width : node.offsetWidth };  //	object
@@ -37,7 +37,7 @@ qx.Class.define("qx.ui.spread.SpreadUtilsHtmlLay",
     {
       //	summary
       //	Returns the dimensions of the passed element based on border-box sizing.
-      node = qx.ui.spread.SpreadUtilsHtmlDom.byId(node);
+      node = ss.SpreadUtilsHtmlDom.byId(node);
 
       // OSY return { width: node.offsetWidth, height: node.offsetHeight };	//	object
       return { height : node.offsetHeight };  //	object

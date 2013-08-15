@@ -1,7 +1,7 @@
 
 
 
-qx.Class.define("qx.ui.spread.SpreadUtilsHtmlDom",
+qx.Class.define("ss.SpreadUtilsHtmlDom",
 {
   /*
   *****************************************************************************

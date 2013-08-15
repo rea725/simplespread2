@@ -1,4 +1,4 @@
-qx.Class.define("qx.ui.spread.SpreadUtilsHtmlSel",
+qx.Class.define("ss.SpreadUtilsHtmlSel",
 {
   /*
   *****************************************************************************
@@ -18,7 +18,7 @@ qx.Class.define("qx.ui.spread.SpreadUtilsHtmlSel",
     disableSelection : function( /* DomNode */ element)
     {
       // summary: disable selection on a node
-      element = qx.ui.spread.SpreadUtilsHtmlDom.byId(element) || document.getElementsByTagName("body")[0];
+      element = ss.SpreadUtilsHtmlDom.byId(element) || document.getElementsByTagName("body")[0];
 
       var client = qx.core.Client.getInstance();
 
@@ -46,7 +46,7 @@ qx.Class.define("qx.ui.spread.SpreadUtilsHtmlSel",
     enableSelection : function( /* DomNode */ element)
     {
       // summary: enable selection on a node
-      element = qx.ui.spread.SpreadUtilsHtmlDom.byId(element) || document.getElementsByTagName("body")[0];
+      element = ss.SpreadUtilsHtmlDom.byId(element) || document.getElementsByTagName("body")[0];
 
       var client = qx.core.Client.getInstance();
 

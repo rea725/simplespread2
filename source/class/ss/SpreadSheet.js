@@ -3,7 +3,7 @@
  * A SpreadSheet Sheet Object
  * Author : O. Sadey
  */
-qx.Class.define("qx.ui.spread.SpreadSheet",
+qx.Class.define("ss.SpreadSheet",
 {
   extend : qx.ui.layout.VerticalBoxLayout,
 
@@ -180,7 +180,7 @@ qx.Class.define("qx.ui.spread.SpreadSheet",
       }
 
       // disable selection
-      qx.ui.spread.SpreadUtilsHtmlSel.disableSelection(this.domNode);
+      ss.SpreadUtilsHtmlSel.disableSelection(this.domNode);
 
       this.gainFocus();
       this._focus(this.currentFocusedCol, this.currentFocusedRow);
@@ -371,7 +371,7 @@ qx.Class.define("qx.ui.spread.SpreadSheet",
         this.rows[i].cells[0].firstChild.firstChild.innerHTML = "" + (i + 1);
 
 
-        this.rows[i].dHeight = 20;  // qx.ui.spread.SpreadUtilsHtmlLay.getBorderBoxHeight(this.rows[i]).height;
+        this.rows[i].dHeight = 20;  // ss.SpreadUtilsHtmlLay.getBorderBoxHeight(this.rows[i]).height;
 
 
         for (var j=0; j<this.rows[i].cells.length; j++)
@@ -408,7 +408,7 @@ qx.Class.define("qx.ui.spread.SpreadSheet",
         ths[i].dCellIndex = i - 1;
 
         // OSY
-        ths[i].dWidth = 65;  // qx.ui.spread.SpreadUtilsHtmlLay.getBorderBoxWidth(ths[i]).width;
+        ths[i].dWidth = 65;  // ss.SpreadUtilsHtmlLay.getBorderBoxWidth(ths[i]).width;
 
         if (ths[i].firstChild && ths[i].firstChild.firstChild) {
           ths[i].firstChild.firstChild.innerHTML = String.fromCharCode("A".charCodeAt(0) + i - 1);
@@ -500,9 +500,9 @@ qx.Class.define("qx.ui.spread.SpreadSheet",
     {
       this.deselectAll();
 
-      var currentTDElem = qx.ui.spread.SpreadUtilsHtmlCommon.getParentByType(e.getDomTarget(), "TD");
+      var currentTDElem = ss.SpreadUtilsHtmlCommon.getParentByType(e.getDomTarget(), "TD");
 
-      if (currentTDElem && qx.ui.spread.SpreadUtilsHtmlStyle.hasClass(currentTDElem, "sheetCell"))
+      if (currentTDElem && ss.SpreadUtilsHtmlStyle.hasClass(currentTDElem, "sheetCell"))
       {
         this.isSelectingCells = true;
         this.selectionStartCell = currentTDElem;
@@ -510,27 +510,27 @@ qx.Class.define("qx.ui.spread.SpreadSheet",
         e.setDefaultPrevented(true);
       }
 
-      var currentDIVElem = qx.ui.spread.SpreadUtilsHtmlCommon.getParentByType(e.getDomTarget(), "DIV");
+      var currentDIVElem = ss.SpreadUtilsHtmlCommon.getParentByType(e.getDomTarget(), "DIV");
 
-      if (currentDIVElem && qx.ui.spread.SpreadUtilsHtmlStyle.hasClass(currentDIVElem, "horizontalResizer"))
+      if (currentDIVElem && ss.SpreadUtilsHtmlStyle.hasClass(currentDIVElem, "horizontalResizer"))
       {
         this.isResizingHorizontal = true;
-        var pos = qx.ui.spread.SpreadUtilsHtmlCommon.getCursorPosition(e);
+        var pos = ss.SpreadUtilsHtmlCommon.getCursorPosition(e);
         this.resizeOrigXPos = pos.x;
-        this.resizeOrigTH = qx.ui.spread.SpreadUtilsHtmlCommon.getParentByType(e.getDomTarget(), "TH");
+        this.resizeOrigTH = ss.SpreadUtilsHtmlCommon.getParentByType(e.getDomTarget(), "TH");
       }
 
-      if (currentDIVElem && qx.ui.spread.SpreadUtilsHtmlStyle.hasClass(currentDIVElem, "verticalResizer"))
+      if (currentDIVElem && ss.SpreadUtilsHtmlStyle.hasClass(currentDIVElem, "verticalResizer"))
       {
         this.isResizingVertical = true;
-        var pos = qx.ui.spread.SpreadUtilsHtmlCommon.getCursorPosition(e);
+        var pos = ss.SpreadUtilsHtmlCommon.getCursorPosition(e);
         this.resizeOrigYPos = pos.y;
-        this.resizeOrigTD = qx.ui.spread.SpreadUtilsHtmlCommon.getParentByType(e.getDomTarget(), "TD");
+        this.resizeOrigTD = ss.SpreadUtilsHtmlCommon.getParentByType(e.getDomTarget(), "TD");
       }
 
       if (!this.isResizingHorizontal && !this.isResizingVertical)
       {
-        var currentTH = qx.ui.spread.SpreadUtilsHtmlCommon.getParentByType(e.getDomTarget(), "TH");
+        var currentTH = ss.SpreadUtilsHtmlCommon.getParentByType(e.getDomTarget(), "TH");
 
         if (currentTH)
         {
@@ -539,9 +539,9 @@ qx.Class.define("qx.ui.spread.SpreadSheet",
           this.selectColumns(this.selectionStartColumn);
         }
 
-        var currentTDRowHeader = qx.ui.spread.SpreadUtilsHtmlCommon.getParentByType(e.getDomTarget(), "TD");
+        var currentTDRowHeader = ss.SpreadUtilsHtmlCommon.getParentByType(e.getDomTarget(), "TD");
 
-        if (currentTDRowHeader && qx.ui.spread.SpreadUtilsHtmlStyle.hasClass(currentTDRowHeader, "sheetRow1stCell"))
+        if (currentTDRowHeader && ss.SpreadUtilsHtmlStyle.hasClass(currentTDRowHeader, "sheetRow1stCell"))
         {
           this.isSelectingRows = true;
           this.selectionStartRow = this.getCellRow(currentTDRowHeader);
@@ -567,9 +567,9 @@ qx.Class.define("qx.ui.spread.SpreadSheet",
       }
       else if (this.isSelectingCells)
       {
-        var currentTDElem = qx.ui.spread.SpreadUtilsHtmlCommon.getParentByType(e.getDomTarget(), "TD");
+        var currentTDElem = ss.SpreadUtilsHtmlCommon.getParentByType(e.getDomTarget(), "TD");
 
-        if (currentTDElem && qx.ui.spread.SpreadUtilsHtmlStyle.hasClass(currentTDElem, "sheetCell"))
+        if (currentTDElem && ss.SpreadUtilsHtmlStyle.hasClass(currentTDElem, "sheetCell"))
         {
           this.deselectAll();
 
@@ -579,16 +579,16 @@ qx.Class.define("qx.ui.spread.SpreadSheet",
       else if (this.isSelectingColumns)
       {
         // the mouse may move over THs or TDs. However we should detect in each case the column
-        var currentTDElem = qx.ui.spread.SpreadUtilsHtmlCommon.getParentByType(e.getDomTarget(), "TD");
+        var currentTDElem = ss.SpreadUtilsHtmlCommon.getParentByType(e.getDomTarget(), "TD");
 
-        if (currentTDElem && qx.ui.spread.SpreadUtilsHtmlStyle.hasClass(currentTDElem, "sheetCell"))
+        if (currentTDElem && ss.SpreadUtilsHtmlStyle.hasClass(currentTDElem, "sheetCell"))
         {
           var selectionEndColumn = this.getCellCol(currentTDElem);
           this.selectColumns(selectionEndColumn);
         }
         else
         {
-          var currentTHElem = qx.ui.spread.SpreadUtilsHtmlCommon.getParentByType(e.getDomTarget(), "TH");
+          var currentTHElem = ss.SpreadUtilsHtmlCommon.getParentByType(e.getDomTarget(), "TH");
 
           if (currentTHElem)
           {
@@ -599,9 +599,9 @@ qx.Class.define("qx.ui.spread.SpreadSheet",
       }
       else if (this.isSelectingRows)
       {
-        var currentTDElem = qx.ui.spread.SpreadUtilsHtmlCommon.getParentByType(e.getDomTarget(), "TD");
+        var currentTDElem = ss.SpreadUtilsHtmlCommon.getParentByType(e.getDomTarget(), "TD");
 
-        if (currentTDElem && (qx.ui.spread.SpreadUtilsHtmlStyle.hasClass(currentTDElem, "sheetCell") || qx.ui.spread.SpreadUtilsHtmlStyle.hasClass(currentTDElem, "sheetRow1stCell")))
+        if (currentTDElem && (ss.SpreadUtilsHtmlStyle.hasClass(currentTDElem, "sheetCell") || ss.SpreadUtilsHtmlStyle.hasClass(currentTDElem, "sheetRow1stCell")))
         {
           var selectionEndRow = this.getCellRow(currentTDElem);
           this.selectRows(selectionEndRow);
@@ -622,7 +622,7 @@ qx.Class.define("qx.ui.spread.SpreadSheet",
       if (this.isSelectingCells)
       {
         // unselect only if the mouse up occured on the same cell
-        if (this.selectionStartCell && this.selectionStartCell == qx.ui.spread.SpreadUtilsHtmlCommon.getParentByType(e.getDomTarget(), "TD"))
+        if (this.selectionStartCell && this.selectionStartCell == ss.SpreadUtilsHtmlCommon.getParentByType(e.getDomTarget(), "TD"))
         {
           this.selectCellByTD(this.selectionStartCell, false);
           this.focusOn(this.selectionStartCell);
@@ -660,9 +660,9 @@ qx.Class.define("qx.ui.spread.SpreadSheet",
      */
     onDblClick : function(e)
     {
-      var currentTDElem = qx.ui.spread.SpreadUtilsHtmlCommon.getParentByType(e.getDomTarget(), "TD");
+      var currentTDElem = ss.SpreadUtilsHtmlCommon.getParentByType(e.getDomTarget(), "TD");
 
-      if (currentTDElem && qx.ui.spread.SpreadUtilsHtmlStyle.hasClass(currentTDElem, "sheetCell"))
+      if (currentTDElem && ss.SpreadUtilsHtmlStyle.hasClass(currentTDElem, "sheetCell"))
       {
         this.deselectAll();
         this.editFormulaField(currentTDElem, true);
@@ -901,7 +901,7 @@ qx.Class.define("qx.ui.spread.SpreadSheet",
           // _tdElem.firstChild.style.height = this.toPx(h - (qx.core.Client.getInstance().isMshtml() ? 0 : 4));
           // _tdElem.firstChild.style.width = this.toPx(w);
           // _tdElem.firstChild.style.height = this.toPx(h);
-          qx.ui.spread.SpreadUtilsHtmlStyle.addClass(_tdElem.firstChild, "focused");
+          ss.SpreadUtilsHtmlStyle.addClass(_tdElem.firstChild, "focused");
         }
       }
     },
@@ -933,7 +933,7 @@ qx.Class.define("qx.ui.spread.SpreadSheet",
           // OSY
           // _tdElem.firstChild.style.width = this.toPx(w);
           // _tdElem.firstChild.style.height = this.toPx(h);
-          qx.ui.spread.SpreadUtilsHtmlStyle.removeClass(_tdElem.firstChild, "focused");
+          ss.SpreadUtilsHtmlStyle.removeClass(_tdElem.firstChild, "focused");
         }
       }
     },
@@ -1011,14 +1011,14 @@ qx.Class.define("qx.ui.spread.SpreadSheet",
 
           if (_select)
           {
-            var bgColor = qx.ui.spread.SpreadUtilsHtmlStyle.getBackgroundColor(tdElem.firstChild);
+            var bgColor = ss.SpreadUtilsHtmlStyle.getBackgroundColor(tdElem.firstChild);
 
             bgColor[0] = parseInt(bgColor[0]);
             bgColor[1] = parseInt(bgColor[1]);
             bgColor[2] = parseInt(bgColor[2]);
             bgColor[0] = bgColor[0] > 128 ? bgColor[0] - 32 : bgColor[0] + 32;
             bgColor[1] = bgColor[1] > 128 ? bgColor[1] - 32 : bgColor[1] + 32;
-            tdElem.firstChild.style.backgroundColor = qx.ui.spread.SpreadUtilsHtmlStyle.rgb2hex(bgColor[0], bgColor[1], bgColor[2]);
+            tdElem.firstChild.style.backgroundColor = ss.SpreadUtilsHtmlStyle.rgb2hex(bgColor[0], bgColor[1], bgColor[2]);
           }
           else
           {
@@ -1258,7 +1258,7 @@ qx.Class.define("qx.ui.spread.SpreadSheet",
      */
     resizeCol : function(e, storePosition)
     {
-      var pos = qx.ui.spread.SpreadUtilsHtmlCommon.getCursorPosition(e);
+      var pos = ss.SpreadUtilsHtmlCommon.getCursorPosition(e);
       var newX = pos.x;
 
       var currentCol = this.resizeOrigTH.dCellIndex + 1;
@@ -1302,7 +1302,7 @@ qx.Class.define("qx.ui.spread.SpreadSheet",
      */
     resizeRow : function(e, storePosition)
     {
-      var pos = qx.ui.spread.SpreadUtilsHtmlCommon.getCursorPosition(e);
+      var pos = ss.SpreadUtilsHtmlCommon.getCursorPosition(e);
       var newY = pos.y;
 
       var currentRow = this.getCellRow(this.resizeOrigTD);
@@ -1474,12 +1474,12 @@ qx.Class.define("qx.ui.spread.SpreadSheet",
         var ths = thead.getElementsByTagName("TH");
         var newTH = ths[columnToInsertBefore].cloneNode(true);
 
-        qx.ui.spread.SpreadUtilsHtmlDom.insertBefore(newTH, ths[columnToInsertBefore]);
+        ss.SpreadUtilsHtmlDom.insertBefore(newTH, ths[columnToInsertBefore]);
 
         for (var i=0; i<this.rows.length; i++)
         {
           var newTD = this.rows[i].cells[columnToInsertBefore].cloneNode(true);
-          qx.ui.spread.SpreadUtilsHtmlDom.insertBefore(newTD, this.rows[i].cells[columnToInsertBefore]);
+          ss.SpreadUtilsHtmlDom.insertBefore(newTD, this.rows[i].cells[columnToInsertBefore]);
         }
 
         this.refreshSpreadsheet();
@@ -1516,12 +1516,12 @@ qx.Class.define("qx.ui.spread.SpreadSheet",
         var ths = thead.getElementsByTagName("TH");
         var newTH = ths[this.currentFocusedCol].cloneNode(true);
 
-        qx.ui.spread.SpreadUtilsHtmlDom.insertAfter(newTH, ths[this.currentFocusedCol]);
+        ss.SpreadUtilsHtmlDom.insertAfter(newTH, ths[this.currentFocusedCol]);
 
         for (var i=0; i<this.rows.length; i++)
         {
           var newTD = this.rows[i].cells[this.currentFocusedCol].cloneNode(true);
-          qx.ui.spread.SpreadUtilsHtmlDom.insertAfter(newTD, this.rows[i].cells[this.currentFocusedCol]);
+          ss.SpreadUtilsHtmlDom.insertAfter(newTD, this.rows[i].cells[this.currentFocusedCol]);
         }
 
         this.refreshSpreadsheet();
@@ -1555,7 +1555,7 @@ qx.Class.define("qx.ui.spread.SpreadSheet",
       try
       {
         var newTR = this.rows[this.currentFocusedRow].cloneNode(true);
-        qx.ui.spread.SpreadUtilsHtmlDom.insertBefore(newTR, this.rows[this.currentFocusedRow]);
+        ss.SpreadUtilsHtmlDom.insertBefore(newTR, this.rows[this.currentFocusedRow]);
 
         this.refreshSpreadsheet();
 
@@ -1585,7 +1585,7 @@ qx.Class.define("qx.ui.spread.SpreadSheet",
       try
       {
         var newTR = this.rows[this.currentFocusedRow].cloneNode(true);
-        qx.ui.spread.SpreadUtilsHtmlDom.insertAfter(newTR, this.rows[this.currentFocusedRow]);
+        ss.SpreadUtilsHtmlDom.insertAfter(newTR, this.rows[this.currentFocusedRow]);
 
         this.refreshSpreadsheet();
 
@@ -1908,8 +1908,8 @@ qx.Class.define("qx.ui.spread.SpreadSheet",
         if (typeof (bgColor) != "undefined")
         {
           tdElem.firstChild.style.backgroundColor = bgColor;
-          var bgColor = qx.ui.spread.SpreadUtilsHtmlStyle.getBackgroundColor(tdElem.firstChild);
-          tdElem.firstChild.dBackgroundColor = qx.ui.spread.SpreadUtilsHtmlStyle.rgb2hex(bgColor[0], bgColor[1], bgColor[2]);
+          var bgColor = ss.SpreadUtilsHtmlStyle.getBackgroundColor(tdElem.firstChild);
+          tdElem.firstChild.dBackgroundColor = ss.SpreadUtilsHtmlStyle.rgb2hex(bgColor[0], bgColor[1], bgColor[2]);
         }
 
         // BOLD

@@ -1,4 +1,4 @@
-qx.Class.define("qx.ui.spread.SpreadUtilsHtmlCommon",
+qx.Class.define("ss.SpreadUtilsHtmlCommon",
 {
   /*
   *****************************************************************************
@@ -21,7 +21,7 @@ qx.Class.define("qx.ui.spread.SpreadUtilsHtmlCommon",
       //	summary
       //	Returns the first ancestor of node with tagName type.
       var _document = this.document;
-      var parent = qx.ui.spread.SpreadUtilsHtmlDom.byId(node);
+      var parent = ss.SpreadUtilsHtmlDom.byId(node);
       type = type.toLowerCase();
 
       while ((parent) && (parent.nodeName.toLowerCase() != type))
@@ -89,7 +89,7 @@ qx.Class.define("qx.ui.spread.SpreadUtilsHtmlCommon",
     {
       //	summary
       //	Returns the value of attribute attr from node.
-      node = qx.ui.spread.SpreadUtilsHtmlDom.byId(node);
+      node = ss.SpreadUtilsHtmlDom.byId(node);
 
       // FIXME: need to add support for attr-specific accessors
       if ((!node) || (!node.getAttribute))
@@ -139,7 +139,7 @@ qx.Class.define("qx.ui.spread.SpreadUtilsHtmlCommon",
     {
       //	summary
       //	Determines whether or not the specified node carries a value for the attribute in question.
-      return this.getAttribute(qx.ui.spread.SpreadUtilsHtmlDom.byId(node), attr) ? true : false;  //	boolean
+      return this.getAttribute(ss.SpreadUtilsHtmlDom.byId(node), attr) ? true : false;  //	boolean
     }
   }
 });
